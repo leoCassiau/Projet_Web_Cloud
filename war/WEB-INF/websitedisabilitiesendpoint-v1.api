@@ -1,0 +1,304 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://projet-web-cloud.appspot.com/_ah/api",
+  "name" : "websitedisabilitiesendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://projet-web-cloud.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "example.com",
+  "ownerName" : "example.com",
+  "packagePath" : "projet_web_cloud",
+  "methods" : {
+    "websitedisabilitiesendpoint.listWebsiteDisabilities" : {
+      "path" : "websitedisabilities",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.listWebsiteDisabilities",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "websitedisabilitiesendpoint.insertWebsiteDisabilities" : {
+      "path" : "websitedisabilities",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.insertWebsiteDisabilities",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "websitedisabilitiesendpoint.getWebsiteDisabilities" : {
+      "path" : "websitedisabilities/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.getWebsiteDisabilities",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "websitedisabilitiesendpoint.updateWebsiteDisabilities" : {
+      "path" : "websitedisabilities",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.updateWebsiteDisabilities",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "websitedisabilitiesendpoint.removeWebsiteDisabilities" : {
+      "path" : "websitedisabilities/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.removeWebsiteDisabilities",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "websitedisabilitiesendpoint.listUrlsByDisabilitie" : {
+      "path" : "stringcollection/{Disabilitie}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.getUrlsByDisabilitie",
+      "request" : {
+        "parameters" : {
+          "Disabilitie" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_WebsiteDisabilities" : {
+        "id" : "CollectionResponse_WebsiteDisabilities",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "WebsiteDisabilities"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "WebsiteDisabilities" : {
+        "id" : "WebsiteDisabilities",
+        "type" : "object",
+        "properties" : {
+          "url" : {
+            "type" : "string"
+          },
+          "dyslexia" : {
+            "type" : "boolean"
+          },
+          "dysgraphia" : {
+            "type" : "boolean"
+          },
+          "dyscalculia" : {
+            "type" : "boolean"
+          },
+          "colourdBrlind" : {
+            "type" : "boolean"
+          },
+          "blind" : {
+            "type" : "boolean"
+          },
+          "deaf" : {
+            "type" : "boolean"
+          },
+          "asthma" : {
+            "type" : "boolean"
+          },
+          "epilepsy" : {
+            "type" : "boolean"
+          },
+          "diabetes" : {
+            "type" : "boolean"
+          },
+          "schizophrenia" : {
+            "type" : "boolean"
+          },
+          "anxiety" : {
+            "type" : "boolean"
+          },
+          "phobia" : {
+            "type" : "boolean"
+          },
+          "depression" : {
+            "type" : "boolean"
+          },
+          "attentionDeficitDisorder" : {
+            "type" : "boolean"
+          },
+          "aspergerSyndrome" : {
+            "type" : "boolean"
+          },
+          "partiallySighted" : {
+            "type" : "boolean"
+          },
+          "hearingImparment" : {
+            "type" : "boolean"
+          },
+          "upperLimbsMobility" : {
+            "type" : "boolean"
+          },
+          "lowerLimbsMobility" : {
+            "type" : "boolean"
+          },
+          "manuelDexterity" : {
+            "type" : "boolean"
+          },
+          "coordinationDifficulties" : {
+            "type" : "boolean"
+          },
+          "postTraumaticStressDisorder" : {
+            "type" : "boolean"
+          },
+          "eatingDisorders" : {
+            "type" : "boolean"
+          },
+          "obesessiveCompulsiveDisorder" : {
+            "type" : "boolean"
+          },
+          "manicDepression" : {
+            "type" : "boolean"
+          },
+          "autisticSpectrumDisorder" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "StringCollection" : {
+        "id" : "StringCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.listWebsiteDisabilities" : {
+        "response" : {
+          "$ref" : "CollectionResponse_WebsiteDisabilities"
+        }
+      },
+      "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.insertWebsiteDisabilities" : {
+        "request" : {
+          "$ref" : "WebsiteDisabilities"
+        },
+        "response" : {
+          "$ref" : "WebsiteDisabilities"
+        }
+      },
+      "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.getWebsiteDisabilities" : {
+        "response" : {
+          "$ref" : "WebsiteDisabilities"
+        }
+      },
+      "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.updateWebsiteDisabilities" : {
+        "request" : {
+          "$ref" : "WebsiteDisabilities"
+        },
+        "response" : {
+          "$ref" : "WebsiteDisabilities"
+        }
+      },
+      "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.removeWebsiteDisabilities" : {
+      },
+      "com.example.projet_web_cloud.WebsiteDisabilitiesEndpoint.getUrlsByDisabilitie" : {
+        "response" : {
+          "$ref" : "StringCollection"
+        }
+      }
+    }
+  }
+}

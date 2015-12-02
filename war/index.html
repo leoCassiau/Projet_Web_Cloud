@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app='DisabilitiesResearch'>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body ng-controller="ResearchController as researchCtrl">
+    <h1>Disabilities Research</h1>
+    <a href="addURL.html">Ajouter un site</a>
+    <div ng-repeat="disabilitie in disabilities"> 
+      <input type="radio" name="disabilitie" ng-model="$parent" ng-change="searchBar()" checked> 
+      {{disabilitie}}
+    </div>
+    
+		<gcse:search></gcse:search>
+  </body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app='DisabilitiesResearch'>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body ng-controller="addURLController">
+    <div ng-repeat="disabilitie in disabilities">
+      <input type="radio" name="disabilitie" ng-model="websiteDisabilitie.disabilitie" value="true" checked> 
+      {{disabilitie}}
+    </div>
+    <input type="textarea" name="url" ng-model="websiteDisabilitie.url" placeholder="url">
+    <input type="button" name="submit" value="Soumettre" ng-click="soumettre(websiteDisabilitie)">
+    {{websiteDisabilitie}}
+  </body>
+</html>

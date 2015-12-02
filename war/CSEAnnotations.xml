@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Annotations start="0" num="2" total="2">
+  <Annotation about="www.example.com/*" score="1" timestamp="0x000524951aa1a543" href="ChF3d3cuZXhhbXBsZS5jb20vKhDDyobV0ZLJAg">
+    <Label name="_cse_7ifptbpizio" />
+    <AdditionalData attribute="original_url" value="www.example.com" />
+  </Annotation>
+  <Annotation about="1-dot-projet-web-cloud.appspot.com/projet_web_cloud" timestamp="0x000524984896a3a4" href="CjMxLWRvdC1wcm9qZXQtd2ViLWNsb3VkLmFwcHNwb3QuY29tL3Byb2pldF93ZWJfY2xvdWQQpMfaxISTyQI" feed="true">
+    <Label name="_csefeed_7ifptbpizio" />
+    <AdditionalData attribute="original_url" value="http://1-dot-projet-web-cloud.appspot.com/projet_web_cloud" />
+  </Annotation>
+  <Annotation about="www.tripadvisor.fr/*">
+	<Label name="_cse_7ifptbpizio" />
+  </Annotation>
+</Annotations>
