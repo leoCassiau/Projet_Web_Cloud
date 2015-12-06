@@ -1,2 +1,54 @@
 /* Styles go here */
+    #left {
+     float:left;
+     width : 25%;
+    }
+
+    #right {
+     float:right;
+     width : 70%;
+    }
+    
+    #list {
+	 border: 1px solid grey;
+	 padding: 10px;
+	 margin: 10px;
+     width:100%;
+    }
+     
+    #listAdd {
+	 border: 1px solid grey;
+	 padding: 10px;
+	 margin: 10px;
+     width:30%;
+    }
+	
+	h1 {
+	  border: 1px solid grey;
+	  padding: 10px;
+	  font-size:40px;
+	  color:#0B610B;
+	  background-color: #D8D8D8;
+	}
+	
+	#lien {
+	  background-color: #C0C0C0;
+	  border: 1px solid grey;
+	  padding: 10px;
+	  margin: 10px;
+	  width: 100%;
+	}
+	
+	#soumettre {
+	  border: 1px solid grey;
+	  padding: 10px;
+	  margin: 10px;
+	  width: 30%;
+	}
+	
+	body {
+	  background-color: #f8f6f2;
+	}
+	
+
 
