@@ -20,7 +20,7 @@
     <a href="addURL.html">Ajouter Un Site</a>
     </div>
     <div id="list" ng-repeat="disabilitie in disabilities"> 
-      <input type="radio" name="disabilitie" ng-model="$parent" ng-change="searchBar()" checked> 
+      <input type="checkbox" name="disabilitie" ng-model="$parent" ng-change="searchBar()" checked> 
       {{disabilitie}}
     </div>
     </div>
