@@ -57,10 +57,102 @@ app.controller('addURLController', function($scope, $http){
   $scope.disabilities = disabilities;
   
   $scope.soumettre = function(websiteDisabilitie) {
-    $http.post(
-      "https://1-dot-projet-web-cloud.appspot.com/_ah/api/websitedisabilitiesendpoint/v1/websitedisabilities",
-      websiteDisabilitie
-    );
+	    var websiteDisabilitie;
+	    var checkboxes = document.getElementsByName("disabilitie");
+	    var url = document.getElementsByName("url")[0].value;
+	    websiteDisabilitie = "url : "+url;
+	    for (var i = 0; i < checkboxes.length; i++)  { 
+	        var checkbox = checkboxes[i];  
+	        if(checkbox.checked){ 
+	            switch(i){
+	            case 0 : 
+	                websiteDisabilitie = websiteDisabilitie + ", Dyslexia:True";
+	                break;
+	            case 1 :
+	                websiteDisabilitie = websiteDisabilitie + ", Dysgraphia:True";
+	                break;
+	            case 2 :
+	                websiteDisabilitie = websiteDisabilitie + ", Dyscalculia:True";
+	                break;
+	            case 3 :
+	                websiteDisabilitie = websiteDisabilitie + ", AttentionDeficitDisorder:True";
+	                break;
+	            case 4 :
+	                websiteDisabilitie = websiteDisabilitie + ", AspergerSyndrome:True";
+	                break;
+	            case 5 :
+	                websiteDisabilitie = websiteDisabilitie + ", ColourdBrlind:True";
+	                break;            
+	            case 6 :
+	                websiteDisabilitie = websiteDisabilitie + ", PartiallySighted:True";
+	                break;
+	            case 7 : 
+	                websiteDisabilitie = websiteDisabilitie + ", Blind:True";
+	                break;
+	            case 8 :
+	                websiteDisabilitie = websiteDisabilitie + ", HearingImparment:True";
+	                break;
+	            case 9 :
+	                websiteDisabilitie = websiteDisabilitie + ", Deaf:True";
+	                break;
+	            case 10 :
+	                websiteDisabilitie = websiteDisabilitie + ", UpperLimbsMobility:True";
+	                break;
+	            case 11 :
+	                websiteDisabilitie = websiteDisabilitie + ", LowerLimbsMobility:True";
+	                break;            
+	            case 12 :
+	                websiteDisabilitie = websiteDisabilitie + ", ManuelDexterity:True";
+	                break;  
+	            case 13 : 
+	                websiteDisabilitie = websiteDisabilitie + ", CoordinationDifficulties:True";
+	                break;
+	            case 14 :
+	                websiteDisabilitie = websiteDisabilitie + ", Asthma:True";
+	                break;
+	            case 15 :
+	                websiteDisabilitie = websiteDisabilitie + ", Epilepsy:True";
+	                break;
+	            case 16 :
+	                websiteDisabilitie = websiteDisabilitie + ", Diabetes:True";
+	                break;
+	            case 17 :
+	                websiteDisabilitie = websiteDisabilitie + ", PostTraumaticStressDisorder:True";
+	                break;            
+	            case 18 :
+	                websiteDisabilitie = websiteDisabilitie + ", Schizophrenia:True";
+	                break;
+	            case 19 : 
+	                websiteDisabilitie = websiteDisabilitie + ", EatingDisorders:True";
+	                break;
+	            case 20 :
+	                websiteDisabilitie = websiteDisabilitie + ", Anxiety:True";
+	                break;
+	            case 21 :
+	                websiteDisabilitie = websiteDisabilitie + ", ObesessiveCompulsiveDisorder:True";
+	                break;
+	            case 22 :
+	                websiteDisabilitie = websiteDisabilitie + ", ManicDepression:True";
+	                break;
+	            case 23 :
+	                websiteDisabilitie = websiteDisabilitie + ", Phobia:True";
+	                break;            
+	            case 24 :
+	                websiteDisabilitie = websiteDisabilitie + ", AutisticSpectrumDisorder:True";
+	                break;
+	            case 25 :
+	                websiteDisabilitie = websiteDisabilitie + ", Depression:True";
+	                break;          
+	            default :
+	                break;
+	            } 
+	        }  
+	    }
+	    $http.post(
+	      "https://1-dot-projet-web-cloud.appspot.com/_ah/api/websitedisabilitiesendpoint/v1/websitedisabilities",
+	      websiteDisabilitie
+	    );
+	    document.write(websiteDisabilitie);
   }
   
   $scope.soumettreOLD = function() {
