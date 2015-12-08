@@ -1,8 +1,13 @@
 package com.example.projet_web_cloud;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -17,15 +22,14 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 
 public class CSEAnnotationsServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4740726131262354698L;
 	private Document CSEAnnotations;
+	private String disabilitie = "anxiety";
 	
 	public CSEAnnotationsServlet() throws ParserConfigurationException {
 		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -43,7 +47,10 @@ public class CSEAnnotationsServlet extends HttpServlet {
 		return writer.toString();
 	}
 	
-	private void createCSEAnnotations(String disabilitie, List<String> urls) {
+	private void createCSEAnnotations(String disabilitie, List<String> urls) throws ParserConfigurationException {
+		if(CSEAnnotations.hasChildNodes()) {
+			CSEAnnotations = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+		}
 		// <Annotations>
 		Element nodeAnnotations = CSEAnnotations.createElement("Annotations");
 		CSEAnnotations.appendChild(nodeAnnotations);
@@ -60,17 +67,38 @@ public class CSEAnnotationsServlet extends HttpServlet {
 		}
 	}
 	
+	private List<String> getUrlsByDisabilitie(String disabilitie) throws MalformedURLException, IOException {
+		List<String> urls = new ArrayList<String>();
+		URL url = new URL("https://1-dot-projet-web-cloud.appspot.com/_ah/api/websitedisabilitiesendpoint/v1/stringcollection/"+disabilitie);
+	    URLConnection uc = url.openConnection();
+	    BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+	    String inputLine;
+	
+	    while ((inputLine = in.readLine()) != null) {
+	    	if(inputLine.startsWith("  \"http")) {
+	    		urls.add(inputLine.substring(inputLine.indexOf('"')+1, inputLine.lastIndexOf('"')));
+	        }
+	    }
+		in.close();
+		return urls;
+	}
+	
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String disabilitie = req.getParameter("disabilitie");
-		WebsiteDisabilitiesEndpoint dataEndpoint = new WebsiteDisabilitiesEndpoint();
-		createCSEAnnotations(disabilitie, dataEndpoint.getUrlsByDisabilitie(disabilitie));
-		
-		resp.setContentType("text/xml;charset=UTF-8");
 	  	try {
+	  		List<String> urls = this.getUrlsByDisabilitie(disabilitie);
+			createCSEAnnotations(disabilitie, urls);
+
+			resp.setContentType("text/xml;charset=UTF-8");
 			resp.getWriter().println(documentToString(CSEAnnotations));
-		} catch (TransformerException e) {
-			e.printStackTrace();
-			resp.getWriter().println(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace(resp.getWriter());
 		}
 	}
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		disabilitie = req.getParameter("disabilitie");
+	}
+
 }

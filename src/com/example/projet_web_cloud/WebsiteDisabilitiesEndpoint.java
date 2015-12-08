@@ -12,6 +12,7 @@ import com.google.appengine.datanucleus.query.JDOCursorHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 import javax.inject.Named;
@@ -170,6 +171,8 @@ public class WebsiteDisabilitiesEndpoint {
 	@SuppressWarnings("unchecked")
 	@ApiMethod(name="listUrlsByDisabilitie")
 	public List<String> getUrlsByDisabilitie(@Named("Disabilitie") String disabilitie) {
+		disabilitie = disabilitie.toLowerCase();
+		disabilitie = disabilitie.replaceFirst(".",(disabilitie.charAt(0)+"").toUpperCase());
 		PersistenceManager mgr = null;
 		List<WebsiteDisabilities> execute = null;
 		List<String> result = new ArrayList<String>();
@@ -177,11 +180,8 @@ public class WebsiteDisabilitiesEndpoint {
 		try {
 			mgr = getPersistenceManager();
 			Query query = mgr.newQuery(WebsiteDisabilities.class);
-			/* Filter disabilitieFilter = new FilterPredicate(disabilitie, FilterOperator.EQUAL, true);
-			query.setFilter(disabilitieFilter); */
-			query.setFilter("disabilitie == true");
-			query.declareParameters("String disabilitie");
-			execute = (List<WebsiteDisabilities>) query.execute(disabilitie);
+			query.setFilter(disabilitie + "== true");
+			execute = (List<WebsiteDisabilities>) query.execute();
 			for (WebsiteDisabilities obj : execute) {
 				result.add(obj.getUrl());
 			}
